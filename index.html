@@ -8,6 +8,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"></script>
 <style>
+  #video-demo {
+  padding: 60px 0;
+}
+
+#myVideo {
+  width: 100%; /* Ajusta el video al tamaño del contenedor */
+  height: auto; /* Mantiene la relación de aspecto */
+  object-fit: cover; /* Asegura que el video cubra todo el área sin distorsionarse */
+  border-radius: 12px; /* Añade bordes redondeados si lo prefieres */
+}
+
 :root {
   --bg:#f5f7fb;--card:#fff;--text:#1b2533;--muted:#5b6b7a;
   --primary:#1f4b86;--secondary:#2563eb;--accent:#0ea5a7;--border:#e6eaf0;
@@ -28,7 +39,7 @@
 nav{position:sticky;top:0;z-index:1000;background:var(--card);border-bottom:1px solid var(--border);box-shadow:var(--shadow);}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0;flex-wrap:wrap;}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text)}
-.brand img{max-height:200px;width:auto;}
+.brand img{max-height:70px;width:auto;}
 .nav-links{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;}
 .nav-links a{text-decoration:none;color:var(--muted);font-weight:600;padding:6px 10px;border-radius:10px;}
 .nav-links a:hover{color:var(--text);background:var(--bg);}
@@ -151,7 +162,7 @@ footer{background:var(--card);border-top:1px solid var(--border)}
 <!-- NAV -->
 <nav>
   <div class="container nav-inner">
-    <a class="brand" href="#"><img src="blue.png" alt="Insightiks logo"></a>
+    <a class="brand" href="#"><img src=Isologo-sin-lema.png alt="Insightiks logo"></a>
     <!-- Hamburger Button (MOBILE) -->
     <button id="hamburgerBtn" class="hamburger" aria-label="Abrir menú">
       <span></span>
@@ -186,7 +197,15 @@ footer{background:var(--card);border-top:1px solid var(--border)}
 </div>
 </div>
 </header>
-
+<!-- VIDEO DEMO -->
+<section id="video-demo">
+  <div class="container">
+    <video id="myVideo" autoplay loop muted>
+      <source src=PresentacionInsightiks.mp4 type="video/mp4">
+      Tu navegador no soporta la etiqueta de video.
+    </video>
+  </div>
+</section>
 <!-- SERVICIOS -->
 <section id="servicios">
 <div class="container">
@@ -371,3 +390,4 @@ document.getElementById('contactForm').addEventListener('submit',e=>{e.preventDe
 </script>
 </body>
 </html>
+
