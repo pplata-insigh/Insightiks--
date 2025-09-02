@@ -1,41 +1,115 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contacto — Insightiks</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Servicios — Insightiks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"></script>
+<style>
+  /* Copia exactamente todos los estilos del index.html */
+  /* Incluye colores, tipografía, grids, nav, botones, secciones, footer, etc. */
+  /* Para abreviar aquí se omite, pero en tu archivo real pega todo el CSS del index.html */
+</style>
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <h1 class="logo">📊 Insightiks</h1>
-      <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="servicios.html">Servicios</a></li>
-        <li><a href="kpis.html">KPIs</a></li>
-        <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="portafolio.html">Portafolio</a></li>
-        <li><a href="precios.html">Precios</a></li>
-        <li><a href="testimonios.html">Testimonios</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="contacto.html" class="active">Contacto</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <section class="content">
-    <h2>Contáctanos</h2>
-    <form>
-      <input type="text" placeholder="Tu nombre" required>
-      <input type="email" placeholder="Tu correo" required>
-      <textarea placeholder="Tu mensaje"></textarea>
-      <button type="submit" class="btn">Enviar</button>
-    </form>
-  </section>
+<!-- NAV -->
+<nav>
+  <div class="container nav-inner">
+    <a class="brand" href="index.html"><img src="Isologo-sin-lema.png" alt="Insightiks logo"></a>
+    <button id="hamburgerBtn" class="hamburger" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html" class="active">Servicios</a>
+      <a href="kpis.html">KPIs</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="portafolio.html">Portafolio</a>
+      <a href="precios.html">Precios</a>
+      <a href="testimonios.html">Testimonios</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contacto.html">Contacto</a>
+    </div>
+    <div class="nav-cta">
+      <button id="modeBtn" class="mode-toggle" aria-label="Cambiar tema">🌞/🌙</button>
+      <a href="contacto.html" class="btn primary">Cotizar</a>
+    </div>
+  </div>
+</nav>
 
-  <footer>
-    <p>© 2025 Insightiks</p>
-  </footer>
+<!-- HERO -->
+<header class="hero">
+<div class="container hero-inner">
+<h1>Servicios de Analítica y Consultoría</h1>
+<p class="muted">Transformamos datos en decisiones estratégicas para tu PYME.</p>
+</div>
+</header>
+
+<!-- SECCIÓN SERVICIOS -->
+<section id="servicios">
+<div class="container">
+<h2 class="section-title">Nuestros Servicios</h2>
+<p class="section-sub">Ofrecemos soluciones personalizadas de analítica de datos, consultoría estratégica y visualización en tiempo real.</p>
+
+<div class="grid grid-3 reveal">
+  <div class="card"><h3>Business Intelligence</h3>
+  <p class="muted">Dashboards interactivos, métricas financieras y operativas, alertas y monitoreo continuo.</p></div>
+
+  <div class="card"><h3>Data Engineering</h3>
+  <p class="muted">Pipelines ETL/ELT, orquestación, modelado dimensional y gobernanza de datos.</p></div>
+
+  <div class="card"><h3>IA & ML</h3>
+  <p class="muted">Predicción de demanda, segmentación de clientes, scoring y recomendadores.</p></div>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="container foot">
+<small>© 2025 Insightiks. Todos los derechos reservados.</small>
+<div>
+<a href="#">Privacidad</a> · <a href="#">Términos</a>
+</div>
+</div>
+</footer>
+
+<!-- FLOATING ACTIONS -->
+<button class="chatbot-btn" id="openChat">Chat</button>
+<button class="whatsapp" onclick="window.open('https://wa.me/50767100557','_blank')">WhatsApp</button>
+
+<div class="chatbot" id="chatbot">
+<header><strong>Asistente Insightiks</strong></header>
+<div class="chatlog" id="chatlog"><p><em>Asistente:</em> ¡Hola! ¿Qué necesitas cotizar hoy?</p></div>
+<div class="composer">
+<input id="chatInput" placeholder="Escribe tu mensaje…" />
+<button class="btn primary" id="sendChat">Enviar</button>
+</div>
+</div>
+
+<script>
+/* Copia todos los scripts del index.html */
+const modeBtn=document.getElementById('modeBtn');const root=document.documentElement;
+const savedTheme=localStorage.getItem('theme');if(savedTheme) root.setAttribute('data-theme',savedTheme);
+modeBtn.addEventListener('click',()=>{const next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);localStorage.setItem('theme',next);});
+
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const navLinks = document.getElementById('navLinks');
+hamburgerBtn.addEventListener('click', () => { navLinks.classList.toggle('open'); hamburgerBtn.classList.toggle('active'); });
+navLinks.querySelectorAll('a').forEach(link => { link.addEventListener('click',()=>{ if(window.innerWidth<900) navLinks.classList.remove('open');});});
+
+const revealEls=document.querySelectorAll('.reveal,.card,.kpi');
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}})},{threshold:.12});
+revealEls.forEach(el=>io.observe(el));
+
+const chatBtn=document.getElementById('openChat');const chatbot=document.getElementById('chatbot');const chatInput=document.getElementById('chatInput');const chatlog=document.getElementById('chatlog');const sendChat=document.getElementById('sendChat');
+chatBtn.addEventListener('click',()=>{chatbot.style.display=chatbot.style.display==='flex'?'none':'flex';});
+sendChat.addEventListener('click',()=>{if(chatInput.value.trim()!==''){const p=document.createElement('p');p.innerHTML=`<strong>Tú:</strong> ${chatInput.value}`;chatlog.appendChild(p);chatlog.scrollTop=chatlog.scrollHeight;chatInput.value='';setTimeout(()=>{const r=document.createElement('p');r.innerHTML=`<em>Asistente:</em> Gracias, recibimos tu mensaje.`;chatlog.appendChild(r);chatlog.scrollTop=chatlog.scrollHeight;},500);}});
+</script>
 </body>
 </html>
+
+
