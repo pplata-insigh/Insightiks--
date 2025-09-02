@@ -3,70 +3,158 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Servicios — Insightiks</title>
+<title>Insightiks — Consultoría y Analítica de Datos</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"></script>
 <style>
-  /* ================== Variables & Base ================== */
-  :root{
-    --bg:#f5f7fb;--card:#fff;--text:#1b2533;--muted:#5b6b7a;
-    --primary:#1f4b86;--secondary:#2563eb;--accent:#0ea5a7;--border:#e6eaf0;
-    --shadow:0 10px 24px rgba(16,24,40,.08);
+  #video-demo {
+  padding: 60px 0;
+}
+
+#myVideo {
+  width: 100%; /* Ajusta el video al tamaño del contenedor */
+  height: auto; /* Mantiene la relación de aspecto */
+  object-fit: cover; /* Asegura que el video cubra todo el área sin distorsionarse */
+  border-radius: 12px; /* Añade bordes redondeados si lo prefieres */
+}
+
+:root {
+  --bg:#f5f7fb;--card:#fff;--text:#1b2533;--muted:#5b6b7a;
+  --primary:#1f4b86;--secondary:#2563eb;--accent:#0ea5a7;--border:#e6eaf0;
+  --shadow:0 10px 24px rgba(16,24,40,.08);
+}
+[data-theme="dark"]{
+  --bg:#0f1722;--card:#141c2a;--text:#e6eef9;--muted:#95a3b9;
+  --primary:#3b82f6;--secondary:#60a5fa;--accent:#22d3ee;--border:#223048;
+  --shadow:0 10px 24px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}html,body{margin:0;padding:0;font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
+.container{max-width:1200px;margin:0 auto;padding:0 20px;}
+.grid{display:grid;gap:24px;}
+.grid-3{grid-template-columns:repeat(3,minmax(0,1fr));}
+.grid-2{grid-template-columns:repeat(2,minmax(0,1fr));}
+@media(max-width:980px){.grid-3{grid-template-columns:1fr 1fr}}
+@media(max-width:680px){.grid-3,.grid-2{grid-template-columns:1fr}.container{padding:0 14px}.grid{gap:16px}}
+nav{position:sticky;top:0;z-index:1000;background:var(--card);border-bottom:1px solid var(--border);box-shadow:var(--shadow);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0;flex-wrap:wrap;}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text)}
+.brand img{max-height:70px;width:auto;}
+.nav-links{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;}
+.nav-links a{text-decoration:none;color:var(--muted);font-weight:600;padding:6px 10px;border-radius:10px;}
+.nav-links a:hover{color:var(--text);background:var(--bg);}
+.nav-cta{display:flex;gap:12px;align-items:center;margin-top:8px;}
+.btn{appearance:none;border:none;border-radius:12px;padding:10px 14px;font-weight:700;cursor:pointer;}
+.btn.primary{background:linear-gradient(90deg,var(--primary),var(--secondary));color:#fff;}
+.btn.ghost{background:transparent;border:1px solid var(--border);color:var(--text);}
+.mode-toggle{border:1px solid var(--border);background:transparent;border-radius:999px;padding:6px 10px;cursor:pointer;color:var(--muted);}
+header.hero{position:relative;overflow:hidden;background:radial-gradient(1200px 400px at 10% 0%,rgba(37,99,235,.08),transparent),radial-gradient(1200px 400px at 90% 0%,rgba(14,165,167,.10),transparent);}
+.hero-inner{padding:60px 0;text-align:center;}
+.hero h1{font-family:Montserrat,Inter,sans-serif;font-weight:800;margin:0 0 10px;font-size:clamp(24px,6vw,36px);letter-spacing:.2px;}
+.hero p{color:var(--muted);font-size:clamp(14px,4vw,18px);margin:0 auto 26px;max-width:780px}
+.hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+section{padding:60px 0;}
+.section-title{font-family:Montserrat,Inter,sans-serif;font-size:clamp(24px,5vw,28px);margin:0 0 10px;}
+.section-sub{color:var(--muted);margin:0 0 26px;}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:var(--shadow);}
+.card h3{margin:0 0 8px}
+.muted{color:var(--muted)}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+@media(max-width:1080px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.kpis{grid-template-columns:1fr}}
+.kpi{padding:14px;border-radius:14px;background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);}
+.kpi .label{color:var(--muted);font-weight:600;}
+.kpi .value{font-size:24px;font-weight:800;margin-top:6px;}
+.pricing .plan{display:flex;flex-direction:column;gap:12px;}
+.price{font-size:28px;font-weight:800;}
+.features{display:flex;flex-direction:column;gap:6px;}
+.features li{list-style:none}
+.features li::before{content:'✓ ';color:var(--accent);font-weight:800;}
+.slider{position:relative;overflow:hidden;}
+.slides{display:flex;gap:12px;transition:transform .5s;will-change:transform;flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x mandatory;}
+.testimonial{min-width:100%;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:var(--shadow);scroll-snap-align:start;}
+.slider-nav{display:flex;justify-content:center;gap:10px;margin-top:10px}
+.dot{height:10px;width:10px;border-radius:50%;border:1px solid var(--border);background:transparent;cursor:pointer}
+.dot.active{background:var(--secondary)}
+details{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px 16px;}
+details summary{cursor:pointer;font-weight:700}
+details p{margin:8px 0 0}
+form .field{display:flex;flex-direction:column;gap:6px;}
+input, select, textarea{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:transparent;color:var(--text);}
+input:focus, select:focus, textarea:focus{outline:2px solid var(--secondary);border-color:transparent}
+footer{background:var(--card);border-top:1px solid var(--border)}
+.foot{display:grid;gap:12px;grid-template-columns:1fr auto;padding:16px 0}
+.foot small{color:var(--muted)}
+.foot a{color:var(--muted);text-decoration:none}
+.whatsapp,.chatbot-btn{position:fixed;right:18px;z-index:999;border:none;border-radius:999px;padding:10px 14px;font-weight:800;cursor:pointer;box-shadow:var(--shadow);}
+.whatsapp{background:#25D366;color:#fff;bottom:18px;}
+.chatbot-btn{background:var(--secondary);color:#fff;bottom:68px;}
+.chatbot{position:fixed;right:18px;bottom:130px;width:320px;max-width:calc(100vw - 36px);background:var(--card);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);display:none;flex-direction:column;overflow:hidden;z-index:999}
+.chatbot header{padding:12px 14px;border-bottom:1px solid var(--border)}
+.chatlog{height:220px;overflow:auto;padding:12px}
+.chatlog p{margin:0 0 8px}
+.chatbot .composer{display:flex;gap:8px;padding:12px;border-top:1px solid var(--border)}
+.chatbot .composer input{flex:1}
+.reveal{opacity:0;transform:translateY(14px);transition:all .5s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+/* Hamburger button */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  margin-left: 8px;
+  z-index: 1200;
+}
+.hamburger span {
+  display: block;
+  width: 26px;
+  height: 3px;
+  background: var(--muted);
+  border-radius: 2px;
+  transition: all 0.25s;
+}
+@media (max-width: 900px) {
+  .hamburger { display: flex; }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    background: var(--card);
+    position: absolute;
+    top: 62px;
+    left: 0;
+    width: 100%;
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    z-index: 999;
   }
-  [data-theme="dark"]{
-    --bg:#0f1722;--card:#141c2a;--text:#e6eef9;--muted:#95a3b9;
-    --primary:#3b82f6;--secondary:#60a5fa;--accent:#22d3ee;--border:#223048;
-    --shadow:0 10px 24px rgba(0,0,0,.35);
+  .nav-links.open {
+    display: flex;
+    animation: fadeInMenu 0.23s;
   }
-  *{box-sizing:border-box}html,body{margin:0;padding:0;font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
-  .container{max-width:1200px;margin:0 auto;padding:0 20px;}
-  .grid{display:grid;gap:24px;}
-  .grid-2{grid-template-columns:repeat(2,minmax(0,1fr));}
-  @media(max-width:680px){.grid-2{grid-template-columns:1fr}.container{padding:0 14px}.grid{gap:16px}}
-  nav{position:sticky;top:0;z-index:1000;background:var(--card);border-bottom:1px solid var(--border);box-shadow:var(--shadow);}
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0;flex-wrap:wrap;}
-  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text)}
-  .brand img{max-height:70px;width:auto;}
-  .nav-links{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;}
-  .nav-links a{text-decoration:none;color:var(--muted);font-weight:600;padding:6px 10px;border-radius:10px;}
-  .nav-links a.active, .nav-links a:hover{color:var(--text);background:var(--bg);}
-  .nav-cta{display:flex;gap:12px;align-items:center;margin-top:8px;}
-  .btn{appearance:none;border:none;border-radius:12px;padding:10px 14px;font-weight:700;cursor:pointer;}
-  .btn.primary{background:linear-gradient(90deg,var(--primary),var(--secondary));color:#fff;}
-  .btn.ghost{background:transparent;border:1px solid var(--border);color:var(--text);}
-  .mode-toggle{border:1px solid var(--border);background:transparent;border-radius:999px;padding:6px 10px;cursor:pointer;color:var(--muted);}
-  header.hero{position:relative;overflow:hidden;background:radial-gradient(1200px 400px at 10% 0%,rgba(37,99,235,.08),transparent),radial-gradient(1200px 400px at 90% 0%,rgba(14,165,167,.10),transparent);}
-  .hero-inner{padding:60px 0;text-align:center;}
-  .hero h1{font-family:Montserrat,Inter,sans-serif;font-weight:800;margin:0 0 10px;font-size:clamp(24px,6vw,36px);letter-spacing:.2px;}
-  .hero p{color:var(--muted);font-size:clamp(14px,4vw,18px);margin:0 auto 26px;max-width:780px}
-  section{padding:60px 0;}
-  .section-title{font-family:Montserrat,Inter,sans-serif;font-size:clamp(24px,5vw,28px);margin:0 0 10px;}
-  .section-sub{color:var(--muted);margin:0 0 26px;}
-  .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:var(--shadow);}
-  .card h3{margin:0 0 8px}
-  .muted{color:var(--muted)}
-  /* Hamburger button */
-  .hamburger {display:none; flex-direction: column; gap: 4px; background: transparent; border: none; cursor: pointer; padding: 10px; margin-left: 8px; z-index: 1200;}
-  .hamburger span {display: block; width: 26px; height: 3px; background: var(--muted); border-radius: 2px; transition: all 0.25s;}
-  @media (max-width: 900px) {
-    .hamburger { display: flex; }
-    .nav-links {
-      display: none;
-      flex-direction: column;
-      gap: 0;
-      background: var(--card);
-      position: absolute;
-      top: 62px;
-      left: 0;
-      width: 100%;
-      border-bottom: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      z-index: 999;
-    }
-    .nav-links.open { display: flex; animation: fadeInMenu 0.23s; }
-    .nav-links a { padding: 16px 24px; border-radius: 0; border-bottom: 1px solid var(--border);}
+  .nav-links a {
+    padding: 16px 24px;
+    border-radius: 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--muted);
   }
-  @keyframes fadeInMenu {from { opacity: 0; transform: translateY(-12px);} to { opacity: 1; transform: translateY(0);}}
+  .nav-cta { margin-top: 0; }
+}
+@keyframes fadeInMenu {
+  from { opacity: 0; transform: translateY(-12px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+@media(max-width:480px){
+  .hero-inner{padding:40px 0}
+  .kpi .value{font-size:20px}
+  .price{font-size:24px}
+  .chatbot{width:280px;bottom:60px}
+  .whatsapp,.chatbot-btn{padding:8px 12px;bottom:12px;right:12px;}
+}
 </style>
 </head>
 <body>
@@ -74,18 +162,176 @@
 <!-- NAV -->
 <nav>
   <div class="container nav-inner">
-    <a class="brand" href="index.html"><img src="Isologo-sin-lema.png" alt="Insightiks logo"></a>
+    <a class="brand" href="#"><img src=Isologo-sin-lema.png alt="Insightiks logo"></a>
+    <!-- Hamburger Button (MOBILE) -->
     <button id="hamburgerBtn" class="hamburger" aria-label="Abrir menú">
       <span></span>
       <span></span>
       <span></span>
     </button>
     <div class="nav-links" id="navLinks">
-      <a href="index.html">Inicio</a>
-      <a href="servicios.html" class="active">Servicios</a>
+      <a href="servicios.html">Servicios</a>
       <a href="kpis.html">KPIs</a>
       <a href="dashboard.html">Dashboard</a>
       <a href="portafolio.html">Portafolio</a>
       <a href="precios.html">Precios</a>
       <a href="testimonios.html">Testimonios</a>
-      <a href="fa
+      <a href="faq.html">FAQ</a>
+      <a href="contacto.html">Contacto</a>
+    </div>
+    <div class="nav-cta">
+      <button id="modeBtn" class="mode-toggle" aria-label="Cambiar tema">🌞/🌙</button>
+      <a href="#contacto" class="btn primary">Cotizar</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+<div class="container hero-inner">
+<h1>Transformamos datos en claridad para tu PYME</h1>
+</div>
+</header>
+<!-- VIDEO DEMO -->
+<section id="video-demo">
+  <div class="container">
+    <video id="myVideo" autoplay loop muted>
+      <source src=PresentacionInsightiks1.mp4 type="video/mp4">
+      Tu navegador no soporta la etiqueta de video.
+    </video>
+  </div>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="container">
+    <h2 class="section-title">Contáctanos</h2>
+    <p class="section-sub">Cuéntanos de tu proyecto. Te respondemos en menos de 24 horas hábiles.</p>
+    <div class="grid grid-2 reveal">
+
+      <!-- 🚀 Google Forms con bordes -->
+      <div style="
+        max-width: 100%; 
+        background: var(--card); 
+        border: 2px solid var(--border); 
+        border-radius: 12px; 
+        box-shadow: var(--shadow); 
+        padding: 20px;">
+        
+        <iframe 
+          src="https://docs.google.com/forms/d/e/1FAIpQLSeiat_YMN9urcn5Jt5ZjtpBN6WtDGsB2iWQbwFd85y2r0ZFKg/viewform?embedded=true" 
+          width="100%" 
+          height="800" 
+          frameborder="0" 
+          marginheight="0" 
+          marginwidth="0" 
+          style="border: none; border-radius: 8px;">
+          Cargando…
+        </iframe>
+      </div>
+
+      <!-- 📍 Tarjeta con datos de contacto y mapa -->
+      <div class="card">
+        <h3>Ubicación</h3>
+        <p class="muted">Ciudad de Panamá, Panamá</p>
+        <div style="border-radius:12px; overflow:hidden; border:1px solid var(--border)">
+          <iframe 
+            title="Mapa" 
+            width="100%" 
+            height="260" 
+            style="border:0" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade" 
+            src="https://www.google.com/maps?q=Ciudad%20de%20Panam%C3%A1&output=embed">
+          </iframe>
+        </div>
+        <p><strong>Tel:</strong> +507 6710-0557<br>
+           <strong>Correo:</strong> contacto@insightiks.com</p>
+<div style="margin-top:15px; display:flex; gap:10px;">
+    <a href=https://www.instagram.com/insightiks/ target="_blank" 
+       style="flex:1; text-align:center; padding:10px 15px; background:#E1306C; color:white; border-radius:8px; text-decoration:none; font-weight:bold; transition:0.3s;">
+       Instagram
+    </a>
+    <a href=https://www.linkedin.com/company/108669890/admin/dashboard/ target="_blank" 
+       style="flex:1; text-align:center; padding:10px 15px; background:#0077B5; color:white; border-radius:8px; text-decoration:none; font-weight:bold; transition:0.3s;">
+       LinkedIn
+    </a>
+  </div>
+</div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+<div class="container foot">
+<small>© 2025 Insightiks. Todos los derechos reservados.</small>
+<div><a href="#">Privacidad</a> · <a href="#">Términos</a></div>
+</div>
+</footer>
+
+<!-- FLOATING ACTIONS -->
+<button class="chatbot-btn" id="openChat">Chat</button>
+<button class="whatsapp" onclick="window.open('https://wa.me/50767100557','_blank')">WhatsApp</button>
+
+<div class="chatbot" id="chatbot">
+<header><strong>Asistente Insightiks</strong></header>
+<div class="chatlog" id="chatlog"><p><em>Asistente:</em> ¡Hola! ¿Qué necesitas cotizar hoy?</p></div>
+<div class="composer"><input id="chatInput" placeholder="Escribe tu mensaje…" /><button class="btn primary" id="sendChat">Enviar</button></div>
+</div>
+
+<script>
+// Modo
+const modeBtn=document.getElementById('modeBtn');const root=document.documentElement;
+const savedTheme=localStorage.getItem('theme');if(savedTheme) root.setAttribute('data-theme',savedTheme);
+modeBtn.addEventListener('click',()=>{const next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);localStorage.setItem('theme',next);});
+
+// Hamburger menu logic
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const navLinks = document.getElementById('navLinks');
+hamburgerBtn.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+  hamburgerBtn.classList.toggle('active');
+});
+// Optional: Close menu when clicking a link (mobile UX)
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    if(window.innerWidth < 900) navLinks.classList.remove('open');
+  });
+});
+
+// Reveal scroll
+const revealEls=document.querySelectorAll('.reveal,.card,.kpi');const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}})},{threshold:.12});revealEls.forEach(el=>io.observe(el));
+
+// KPI count
+function countUp(el){const target=+el.dataset.count;const step=Math.max(1,Math.floor(target/80));let v=0;const t=setInterval(()=>{v+=step;if(v>=target){v=target;clearInterval(t);}el.textContent=v;},16);}
+document.querySelectorAll('.kpi .value,.kpi .value span').forEach(countUp);
+
+// Charts
+new Chart(document.getElementById('chartLine'),{type:'line',data:{labels:['Ene','Feb','Mar','Abr','May','Jun','Jul'],datasets:[{label:'Ventas',data:[12,16,14,20,18,24,28],tension:.35}]},options:{responsive:true,plugins:{legend:{display:true}}}});
+new Chart(document.getElementById('chartBar'),{type:'bar',data:{labels:['Web','Tienda','Distribuidores','Marketplace'],datasets:[{label:'Ingresos',data:[32,21,17,25]}]},options:{responsive:true,plugins:{legend:{display:true}}}});
+new Chart(document.getElementById('chartPie'),{type:'doughnut',data:{labels:['A','B','C','D'],datasets:[{data:[35,25,22,18]}]},options:{responsive:true,plugins:{legend:{position:'bottom'}}}});
+
+// Testimonials slider
+const slides=document.getElementById('slides');const dots=document.querySelectorAll('.dot');
+function goToSlide(i){slides.style.transform=`translateX(-${i*100}%)`;dots.forEach(d=>d.classList.remove('active'));dots[i].classList.add('active');}
+dots.forEach(d=>d.addEventListener('click',()=>goToSlide(+d.dataset.slide)));
+
+// Pricing CTA
+function gotoContacto(plan){location.hash='#contacto';setTimeout(()=>{const msg=document.querySelector('#contactForm textarea');msg.value='Estoy interesado en el plan: '+plan;msg.focus();},300);}
+
+// Chat
+const chatBtn=document.getElementById('openChat');const chatbot=document.getElementById('chatbot');const chatInput=document.getElementById('chatInput');const chatlog=document.getElementById('chatlog');const sendChat=document.getElementById('sendChat');
+chatBtn.addEventListener('click',()=>{chatbot.style.display=chatbot.style.display==='flex'?'none':'flex';});
+sendChat.addEventListener('click',()=>{if(chatInput.value.trim()!==''){const p=document.createElement('p');p.innerHTML=`<strong>Tú:</strong> ${chatInput.value}`;chatlog.appendChild(p);chatlog.scrollTop=chatlog.scrollHeight;chatInput.value='';setTimeout(()=>{const r=document.createElement('p');r.innerHTML=`<em>Asistente:</em> Gracias, recibimos tu mensaje.`;chatlog.appendChild(r);chatlog.scrollTop=chatlog.scrollHeight;},500);}});
+
+// Form submit
+document.getElementById('contactForm').addEventListener('submit',e=>{e.preventDefault();document.getElementById('formMsg').textContent='¡Mensaje enviado! Nos contactaremos pronto.';});
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
