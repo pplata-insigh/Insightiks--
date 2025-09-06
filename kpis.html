@@ -3,34 +3,155 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KPIs — Insightiks</title>
-  <link rel="stylesheet" href="style.css">
+  <title>KPI — Insightiks</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #f9fafb;
+      color: #1f2937;
+    }
+
+    header {
+      background: #1a56db;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    header p {
+      margin-top: .5rem;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    .kpi {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .kpi h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      color: #111827;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    .card i {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #1a56db;
+    }
+
+    .card h3 {
+      margin: 0.5rem 0;
+      font-size: 1.3rem;
+      color: #111827;
+    }
+
+    .card p {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 0.5rem 0;
+      color: #1a56db;
+    }
+
+    .card span {
+      display: block;
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+
+    footer {
+      background: #111827;
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 3rem;
+    }
+  </style>
 </head>
 <body>
+
+  <!-- Encabezado -->
   <header>
-    <nav class="navbar">
-      <h1 class="logo">📊 Insightiks</h1>
-      <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="servicios.html">Servicios</a></li>
-        <li><a href="kpis.html" class="active">KPIs</a></li>
-        <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="portafolio.html">Portafolio</a></li>
-        <li><a href="precios.html">Precios</a></li>
-        <li><a href="testimonios.html">Testimonios</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
-      </ul>
-    </nav>
+    <h1>KPI Insightiks</h1>
+    <p>Indicadores clave para medir el desempeño de tu empresa</p>
   </header>
 
-  <section class="content">
-    <h2>KPIs Clave</h2>
-    <p>Definimos y monitoreamos indicadores clave de rendimiento que te ayudan a medir el éxito de tus estrategias.</p>
+  <!-- Sección KPI -->
+  <section class="kpi">
+    <h2>Indicadores de Negocio</h2>
+    <div class="grid">
+
+      <div class="card">
+        <i class="fas fa-chart-line"></i>
+        <h3>Crecimiento de Ventas</h3>
+        <p>+18%</p>
+        <span>Comparado con el mes anterior</span>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-user-check"></i>
+        <h3>Satisfacción del Cliente</h3>
+        <p>92%</p>
+        <span>Basado en encuestas de usuarios</span>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-clock"></i>
+        <h3>Tiempo de Respuesta</h3>
+        <p>2h</p>
+        <span>Promedio en atención al cliente</span>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-coins"></i>
+        <h3>Retorno de Inversión</h3>
+        <p>135%</p>
+        <span>Últimos 12 meses</span>
+      </div>
+
+    </div>
   </section>
 
+  <!-- Footer -->
   <footer>
+    <p>© 2025 Insightiks — Consultoría y Analítica de Datos</p>
+  </footer>
+
+</body>
+</html>
+
     <p>© 2025 Insightiks</p>
   </footer>
 </body>
 </html>
+
