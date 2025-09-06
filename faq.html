@@ -4,34 +4,179 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FAQ — Insightiks</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #f9fafb;
+      color: #1f2937;
+    }
+
+    header {
+      background: #1a56db;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    header p {
+      margin-top: .5rem;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    .faq {
+      max-width: 800px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .faq h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      color: #111827;
+    }
+
+    .item {
+      background: white;
+      border-radius: 0.8rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .pregunta {
+      padding: 1.2rem 1.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #1f2937;
+    }
+
+    .pregunta i {
+      transition: transform 0.3s ease;
+      color: #1a56db;
+    }
+
+    .respuesta {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 1.5rem;
+      font-size: 1rem;
+      color: #374151;
+      line-height: 1.5;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+    }
+
+    .item.activo .respuesta {
+      max-height: 200px;
+      padding: 1rem 1.5rem;
+    }
+
+    .item.activo .pregunta i {
+      transform: rotate(180deg);
+    }
+
+    footer {
+      background: #111827;
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 3rem;
+    }
+  </style>
 </head>
 <body>
+
+  <!-- Encabezado -->
   <header>
-    <nav class="navbar">
-      <h1 class="logo">📊 Insightiks</h1>
-      <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="servicios.html">Servicios</a></li>
-        <li><a href="kpis.html">KPIs</a></li>
-        <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="portafolio.html">Portafolio</a></li>
-        <li><a href="precios.html">Precios</a></li>
-        <li><a href="testimonios.html">Testimonios</a></li>
-        <li><a href="faq.html" class="active">FAQ</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
-      </ul>
-    </nav>
+    <h1>Preguntas Frecuentes</h1>
+    <p>Resolvemos las dudas más comunes de nuestros clientes</p>
   </header>
 
-  <section class="content">
-    <h2>Preguntas Frecuentes</h2>
-    <p><strong>¿Qué tipo de empresas atienden?</strong><br>Trabajamos con pymes, corporativos y startups.</p>
-    <p><strong>¿Ofrecen capacitación?</strong><br>Sí, capacitamos a equipos en analítica y visualización.</p>
+  <!-- Sección FAQ -->
+  <section class="faq">
+    <h2>FAQ Insightiks</h2>
+
+    <div class="item">
+      <div class="pregunta">
+        <span>¿Qué servicios ofrece Insightiks?</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="respuesta">
+        Ofrecemos consultoría en analítica de datos, gestión de bases de datos, inteligencia de negocios y capacitación para equipos en herramientas de BI.
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="pregunta">
+        <span>¿Cómo puedo contratar un servicio?</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="respuesta">
+        Puedes contactarnos a través de nuestro formulario en la sección de contacto o escribirnos directamente a nuestro correo. Te responderemos en menos de 24 horas.
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="pregunta">
+        <span>¿Trabajan con empresas pequeñas o solo grandes corporaciones?</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="respuesta">
+        Trabajamos tanto con PYMEs como con grandes empresas. Ajustamos nuestros servicios a las necesidades y recursos de cada cliente.
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="pregunta">
+        <span>¿Ofrecen capacitaciones personalizadas?</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="respuesta">
+        Sí, diseñamos capacitaciones adaptadas al nivel y área de trabajo de tu equipo, enfocándonos en herramientas de análisis y mejores prácticas de BI.
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="pregunta">
+        <span>¿Cuánto tarda un proyecto en promedio?</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="respuesta">
+        Depende del alcance. Un dashboard básico puede tardar entre 1 y 2 semanas, mientras que proyectos más complejos de integración y BI pueden llevar de 1 a 3 meses.
+      </div>
+    </div>
+
   </section>
 
+  <!-- Footer -->
   <footer>
-    <p>© 2025 Insightiks</p>
+    <p>© 2025 Insightiks — Consultoría y Analítica de Datos</p>
   </footer>
+
+  <script>
+    // Acordeón interactivo
+    const items = document.querySelectorAll(".item");
+
+    items.forEach(item => {
+      item.querySelector(".pregunta").addEventListener("click", () => {
+        item.classList.toggle("activo");
+      });
+    });
+  </script>
+
 </body>
 </html>
+
