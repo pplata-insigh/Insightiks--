@@ -4,34 +4,183 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Testimonios — Insightiks</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* ===== Estilos Generales ===== */
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #f9fafb;
+      color: #1f2937;
+    }
+
+    header {
+      background: #1a56db;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    header p {
+      margin-top: .5rem;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    /* ===== Testimonios ===== */
+    .testimonios {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .testimonios h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 3rem;
+      color: #111827;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    .perfil {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .perfil img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 1rem;
+      border: 3px solid #1a56db;
+    }
+
+    .perfil h3 {
+      margin: 0;
+      font-size: 1.1rem;
+      color: #111827;
+    }
+
+    .perfil p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+
+    .estrellas {
+      color: #facc15;
+      margin-bottom: 1rem;
+    }
+
+    .card p {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #374151;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      background: #111827;
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 3rem;
+    }
+  </style>
 </head>
 <body>
+
+  <!-- Encabezado -->
   <header>
-    <nav class="navbar">
-      <h1 class="logo">📊 Insightiks</h1>
-      <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="servicios.html">Servicios</a></li>
-        <li><a href="kpis.html">KPIs</a></li>
-        <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="portafolio.html">Portafolio</a></li>
-        <li><a href="precios.html">Precios</a></li>
-        <li><a href="testimonios.html" class="active">Testimonios</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
-      </ul>
-    </nav>
+    <h1>Testimonios Insightiks</h1>
+    <p>Lo que dicen nuestros clientes</p>
   </header>
 
-  <section class="content">
-    <h2>Lo que dicen nuestros clientes</h2>
-    <p>"Insightiks nos ayudó a entender mejor nuestros datos y tomar decisiones más rápidas."</p>
-    <p>"Los dashboards interactivos cambiaron la manera en que vemos el negocio."</p>
+  <!-- Sección Testimonios -->
+  <section class="testimonios">
+    <h2>Clientes que confían en nosotros</h2>
+    <div class="grid">
+
+      <div class="card">
+        <div class="perfil">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Cliente">
+          <div>
+            <h3>Verónica Figueroa</h3>
+            <p>CEO — Empresa Tech</p>
+          </div>
+        </div>
+        <div class="estrellas">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <p>Insightiks nos ayudó a estructurar nuestros datos y ahora tomamos decisiones en tiempo real. ¡Excelente equipo!</p>
+      </div>
+
+      <div class="card">
+        <div class="perfil">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Cliente">
+          <div>
+            <h3>Diego Clark</h3>
+            <p>Gerente de Operaciones</p>
+          </div>
+        </div>
+        <div class="estrellas">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+        </div>
+        <p>Gracias a su consultoría, optimizamos nuestros procesos y reducimos costos en un 20%. Totalmente recomendados.</p>
+      </div>
+
+      <div class="card">
+        <div class="perfil">
+          <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="Cliente">
+          <div>
+            <h3>Jocelyne Ríos</h3>
+            <p>Directora de Marketing</p>
+          </div>
+        </div>
+        <div class="estrellas">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <i class="fas fa-star"></i><i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <p>La visualización de datos que desarrollaron nos permite entender mejor el comportamiento de nuestros clientes.</p>
+      </div>
+
+    </div>
   </section>
 
+  <!-- Footer -->
   <footer>
-    <p>© 2025 Insightiks</p>
+    <p>© 2025 Insightiks — Consultoría y Analítica de Datos</p>
   </footer>
+
 </body>
 </html>
