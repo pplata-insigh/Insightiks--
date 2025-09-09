@@ -1,106 +1,164 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Servicios — Insightiks</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    /* ===== Estilos Generales ===== */
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: #f9fafb;
-      color: #1f2937;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Insightiks — Consultoría y Analítica de Datos</title>
+<link rel="icon" type="image/png" sizes="75x70" href="INSIGH.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1"></script>
+<style>
+  #video-demo {
+  padding: 60px 0;
+}
 
-    header {
-      background: #1a56db;
-      color: white;
-      padding: 2rem;
-      text-align: center;
-    }
+#myVideo {
+  width: 100%; /* Ajusta el video al tamaño del contenedor */
+  height: auto; /* Mantiene la relación de aspecto */
+  object-fit: cover; /* Asegura que el video cubra todo el área sin distorsionarse */
+  border-radius: 12px; /* Añade bordes redondeados si lo prefieres */
+}
 
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-    }
-
-    header p {
-      margin-top: .5rem;
-      font-size: 1.2rem;
-      opacity: 0.9;
-    }
-
-    /* ===== Sección Servicios ===== */
-    .servicios {
-      padding: 4rem 2rem;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .servicios h2 {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 3rem;
-      color: #111827;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-
-    .card {
-      background: white;
-      border-radius: 1rem;
-      padding: 2rem;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
-    }
-
-    .card i {
-      font-size: 2.5rem;
-      color: #1a56db;
-      margin-bottom: 1rem;
-    }
-
-    .card h3 {
-      font-size: 1.3rem;
-      margin: 0.5rem 0;
-      color: #111827;
-    }
-
-    .card p {
-      font-size: 1rem;
-      line-height: 1.5;
-      color: #4b5563;
-    }
-
-    /* ===== Footer ===== */
-    footer {
-      background: #111827;
-      color: white;
-      text-align: center;
-      padding: 1.5rem;
-      margin-top: 3rem;
-    }
-  </style>
+:root {
+  --bg:#f5f7fb;--card:#fff;--text:#1b2533;--muted:#5b6b7a;
+  --primary:#1f4b86;--secondary:#2563eb;--accent:#0ea5a7;--border:#e6eaf0;
+  --shadow:0 10px 24px rgba(16,24,40,.08);
+}
+[data-theme="dark"]{
+  --bg:#0f1722;--card:#141c2a;--text:#e6eef9;--muted:#95a3b9;
+  --primary:#3b82f6;--secondary:#60a5fa;--accent:#22d3ee;--border:#223048;
+  --shadow:0 10px 24px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}html,body{margin:0;padding:0;font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
+.container{max-width:1200px;margin:0 auto;padding:0 20px;}
+.grid{display:grid;gap:24px;}
+.grid-3{grid-template-columns:repeat(3,minmax(0,1fr));}
+.grid-2{grid-template-columns:repeat(2,minmax(0,1fr));}
+@media(max-width:980px){.grid-3{grid-template-columns:1fr 1fr}}
+@media(max-width:680px){.grid-3,.grid-2{grid-template-columns:1fr}.container{padding:0 14px}.grid{gap:16px}}
+nav{position:sticky;top:0;z-index:1000;background:var(--card);border-bottom:1px solid var(--border);box-shadow:var(--shadow);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0;flex-wrap:wrap;}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text)}
+.brand img{max-height:70px;width:auto;}
+.nav-links{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;}
+.nav-links a{text-decoration:none;color:var(--muted);font-weight:600;padding:6px 10px;border-radius:10px;}
+.nav-links a:hover{color:var(--text);background:var(--bg);}
+.nav-cta{display:flex;gap:12px;align-items:center;margin-top:8px;}
+.btn{appearance:none;border:none;border-radius:12px;padding:10px 14px;font-weight:700;cursor:pointer;}
+.btn.primary{background:linear-gradient(90deg,var(--primary),var(--secondary));color:#fff;}
+.btn.ghost{background:transparent;border:1px solid var(--border);color:var(--text);}
+.mode-toggle{border:1px solid var(--border);background:transparent;border-radius:999px;padding:6px 10px;cursor:pointer;color:var(--muted);}
+header.hero{position:relative;overflow:hidden;background:radial-gradient(1200px 400px at 10% 0%,rgba(37,99,235,.08),transparent),radial-gradient(1200px 400px at 90% 0%,rgba(14,165,167,.10),transparent);}
+.hero-inner{padding:60px 0;text-align:center;}
+.hero h1{font-family:Montserrat,Inter,sans-serif;font-weight:800;margin:0 0 10px;font-size:clamp(24px,6vw,36px);letter-spacing:.2px;}
+.hero p{color:var(--muted);font-size:clamp(14px,4vw,18px);margin:0 auto 26px;max-width:780px}
+.hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+section{padding:60px 0;}
+.section-title{font-family:Montserrat,Inter,sans-serif;font-size:clamp(24px,5vw,28px);margin:0 0 10px;}
+.section-sub{color:var(--muted);margin:0 0 26px;}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:var(--shadow);}
+.card h3{margin:0 0 8px}
+.muted{color:var(--muted)}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+@media(max-width:1080px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.kpis{grid-template-columns:1fr}}
+.kpi{padding:14px;border-radius:14px;background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);}
+.kpi .label{color:var(--muted);font-weight:600;}
+.kpi .value{font-size:24px;font-weight:800;margin-top:6px;}
+.pricing .plan{display:flex;flex-direction:column;gap:12px;}
+.price{font-size:28px;font-weight:800;}
+.features{display:flex;flex-direction:column;gap:6px;}
+.features li{list-style:none}
+.features li::before{content:'✓ ';color:var(--accent);font-weight:800;}
+.slider{position:relative;overflow:hidden;}
+.slides{display:flex;gap:12px;transition:transform .5s;will-change:transform;flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x mandatory;}
+.testimonial{min-width:100%;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:var(--shadow);scroll-snap-align:start;}
+.slider-nav{display:flex;justify-content:center;gap:10px;margin-top:10px}
+.dot{height:10px;width:10px;border-radius:50%;border:1px solid var(--border);background:transparent;cursor:pointer}
+.dot.active{background:var(--secondary)}
+details{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px 16px;}
+details summary{cursor:pointer;font-weight:700}
+details p{margin:8px 0 0}
+form .field{display:flex;flex-direction:column;gap:6px;}
+input, select, textarea{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:transparent;color:var(--text);}
+input:focus, select:focus, textarea:focus{outline:2px solid var(--secondary);border-color:transparent}
+footer{background:var(--card);border-top:1px solid var(--border)}
+.foot{display:grid;gap:12px;grid-template-columns:1fr auto;padding:16px 0}
+.foot small{color:var(--muted)}
+.foot a{color:var(--muted);text-decoration:none}
+.whatsapp,.chatbot-btn{position:fixed;right:18px;z-index:999;border:none;border-radius:999px;padding:10px 14px;font-weight:800;cursor:pointer;box-shadow:var(--shadow);}
+.whatsapp{background:#25D366;color:#fff;bottom:18px;}
+.chatbot-btn{background:var(--secondary);color:#fff;bottom:68px;}
+.chatbot{position:fixed;right:18px;bottom:130px;width:320px;max-width:calc(100vw - 36px);background:var(--card);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);display:none;flex-direction:column;overflow:hidden;z-index:999}
+.chatbot header{padding:12px 14px;border-bottom:1px solid var(--border)}
+.chatlog{height:220px;overflow:auto;padding:12px}
+.chatlog p{margin:0 0 8px}
+.chatbot .composer{display:flex;gap:8px;padding:12px;border-top:1px solid var(--border)}
+.chatbot .composer input{flex:1}
+.reveal{opacity:0;transform:translateY(14px);transition:all .5s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+/* Hamburger button */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  margin-left: 8px;
+  z-index: 1200;
+}
+.hamburger span {
+  display: block;
+  width: 26px;
+  height: 3px;
+  background: var(--muted);
+  border-radius: 2px;
+  transition: all 0.25s;
+}
+@media (max-width: 900px) {
+  .hamburger { display: flex; }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    background: var(--card);
+    position: absolute;
+    top: 62px;
+    left: 0;
+    width: 100%;
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    z-index: 999;
+  }
+  .nav-links.open {
+    display: flex;
+    animation: fadeInMenu 0.23s;
+  }
+  .nav-links a {
+    padding: 16px 24px;
+    border-radius: 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--muted);
+  }
+  .nav-cta { margin-top: 0; }
+}
+@keyframes fadeInMenu {
+  from { opacity: 0; transform: translateY(-12px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+@media(max-width:480px){
+  .hero-inner{padding:40px 0}
+  .kpi .value{font-size:20px}
+  .price{font-size:24px}
+  .chatbot{width:280px;bottom:60px}
+  .whatsapp,.chatbot-btn{padding:8px 12px;bottom:12px;right:12px;}
+}
+</style>
 </head>
 <body>
 
-  <!-- Encabezado -->
-  <header>
-    <h1>Servicios Insightiks</h1>
-    <p>Consultoría y Analítica de Datos para potenciar tu empresa</p>
-  </header>
 <!-- NAV -->
 <nav>
   <div class="container nav-inner">
@@ -127,39 +185,125 @@
     </div>
   </div>
 </nav>
-  <!-- Sección Servicios -->
-  <section class="servicios">
-    <h2>Nuestros Servicios</h2>
-    <div class="grid">
-      <div class="card">
-        <i class="fas fa-chart-line"></i>
-        <h3>Consultoría en Analítica</h3>
-        <p>Te ayudamos a entender tus datos y transformarlos en decisiones estratégicas para tu negocio.</p>
-      </div>
-      <div class="card">
-        <i class="fas fa-database"></i>
-        <h3>Gestión de Datos</h3>
-        <p>Diseño, limpieza y optimización de bases de datos para asegurar información confiable y útil.</p>
-      </div>
-      <div class="card">
-        <i class="fas fa-lightbulb"></i>
-        <h3>Inteligencia de Negocios</h3>
-        <p>Desarrollamos dashboards e indicadores clave que facilitan la toma de decisiones en tiempo real.</p>
-      </div>
-      <div class="card">
-        <i class="fas fa-users"></i>
-        <h3>Capacitación</h3>
-        <p>Entrenamos a tu equipo en herramientas de análisis de datos y mejores prácticas en BI.</p>
-      </div>
-    </div>
-  </section>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Insightiks — Consultoría y Analítica de Datos</p>
-  </footer>
+<!-- HERO -->
+<header class="hero">
+<div class="container hero-inner">
+<h1>Transformamos datos en claridad para tu PYME</h1>
+</div>
+</header>
+<!-- VIDEO DEMO -->
+<section id="video-demo">
+  <div class="container">
+    <video id="myVideo" autoplay loop muted>
+      <source src=PresentacionInsightiks1.mp4 type="video/mp4">
+      Tu navegador no soporta la etiqueta de video.
+    </video>
+  </div>
+<center><p>Consultoría en analítica, BI e IA para PYMES y empresas en crecimiento. Entregamos tableros claros, KPIs accionables y modelos predictivos listos para producción.</p></center>
+  <div class="hero-ctas">
+</div>
+</section>
+<!-- SERVICIOS -->
+<section id="servicios">
+<div class="container">
+<h2 class="section-title">Servicios</h2>
+<p class="section-sub">Soluciones punta a punta: desde la ingesta y calidad de datos hasta la visualización y automatización.</p>
+<div class="grid grid-3 reveal">
+<div class="card"><h3>Business Intelligence</h3><p class="muted">Dashboards interactivos, métricas financieras y operativas, alertas y monitoreo continuo.</p></div>
+<div class="card"><h3>Data Engineering</h3><p class="muted">Pipelines ETL/ELT, orquestación, modelado dimensional y gobernanza de datos.</p></div>
+<div class="card"><h3>IA & ML</h3><p class="muted">Predicción de demanda, segmentación de clientes, scoring y recomendadores.</p></div>
+</div>
+</div>
+</section>
 
+<
+</div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+<div class="container foot">
+<small>© 2025 Insightiks. Todos los derechos reservados.</small>
+<div><a href="#">Privacidad</a> · <a href="#">Términos</a></div>
+</div>
+</footer>
+
+<!-- FLOATING ACTIONS -->
+<button class="chatbot-btn" id="openChat">Chat</button>
+<button class="whatsapp" onclick="window.open('https://wa.me/50767100557','_blank')">WhatsApp</button>
+
+<div class="chatbot" id="chatbot">
+<header><strong>Asistente Insightiks</strong></header>
+<div class="chatlog" id="chatlog"><p><em>Asistente:</em> ¡Hola! ¿Qué necesitas cotizar hoy?</p></div>
+<div class="composer"><input id="chatInput" placeholder="Escribe tu mensaje…" /><button class="btn primary" id="sendChat">Enviar</button></div>
+</div>
+
+<script>
+// Modo
+const modeBtn=document.getElementById('modeBtn');const root=document.documentElement;
+const savedTheme=localStorage.getItem('theme');if(savedTheme) root.setAttribute('data-theme',savedTheme);
+modeBtn.addEventListener('click',()=>{const next=root.getAttribute('data-theme')==='light'?'dark':'light';root.setAttribute('data-theme',next);localStorage.setItem('theme',next);});
+
+// Hamburger menu logic
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const navLinks = document.getElementById('navLinks');
+hamburgerBtn.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+  hamburgerBtn.classList.toggle('active');
+});
+// Optional: Close menu when clicking a link (mobile UX)
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    if(window.innerWidth < 900) navLinks.classList.remove('open');
+  });
+});
+
+// Reveal scroll
+const revealEls=document.querySelectorAll('.reveal,.card,.kpi');const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}})},{threshold:.12});revealEls.forEach(el=>io.observe(el));
+
+// KPI count
+function countUp(el){const target=+el.dataset.count;const step=Math.max(1,Math.floor(target/80));let v=0;const t=setInterval(()=>{v+=step;if(v>=target){v=target;clearInterval(t);}el.textContent=v;},16);}
+document.querySelectorAll('.kpi .value,.kpi .value span').forEach(countUp);
+
+// Charts
+new Chart(document.getElementById('chartLine'),{type:'line',data:{labels:['Ene','Feb','Mar','Abr','May','Jun','Jul'],datasets:[{label:'Ventas',data:[12,16,14,20,18,24,28],tension:.35}]},options:{responsive:true,plugins:{legend:{display:true}}}});
+new Chart(document.getElementById('chartBar'),{type:'bar',data:{labels:['Web','Tienda','Distribuidores','Marketplace'],datasets:[{label:'Ingresos',data:[32,21,17,25]}]},options:{responsive:true,plugins:{legend:{display:true}}}});
+new Chart(document.getElementById('chartPie'),{type:'doughnut',data:{labels:['A','B','C','D'],datasets:[{data:[35,25,22,18]}]},options:{responsive:true,plugins:{legend:{position:'bottom'}}}});
+
+// Testimonials slider
+const slides=document.getElementById('slides');const dots=document.querySelectorAll('.dot');
+function goToSlide(i){slides.style.transform=`translateX(-${i*100}%)`;dots.forEach(d=>d.classList.remove('active'));dots[i].classList.add('active');}
+dots.forEach(d=>d.addEventListener('click',()=>goToSlide(+d.dataset.slide)));
+
+// Pricing CTA
+function gotoContacto(plan){location.hash='#contacto';setTimeout(()=>{const msg=document.querySelector('#contactForm textarea');msg.value='Estoy interesado en el plan: '+plan;msg.focus();},300);}
+
+// Chat
+const chatBtn=document.getElementById('openChat');const chatbot=document.getElementById('chatbot');const chatInput=document.getElementById('chatInput');const chatlog=document.getElementById('chatlog');const sendChat=document.getElementById('sendChat');
+chatBtn.addEventListener('click',()=>{chatbot.style.display=chatbot.style.display==='flex'?'none':'flex';});
+sendChat.addEventListener('click',()=>{if(chatInput.value.trim()!==''){const p=document.createElement('p');p.innerHTML=`<strong>Tú:</strong> ${chatInput.value}`;chatlog.appendChild(p);chatlog.scrollTop=chatlog.scrollHeight;chatInput.value='';setTimeout(()=>{const r=document.createElement('p');r.innerHTML=`<em>Asistente:</em> Gracias, recibimos tu mensaje.`;chatlog.appendChild(r);chatlog.scrollTop=chatlog.scrollHeight;},500);}});
+
+// Form submit
+document.getElementById('contactForm').addEventListener('submit',e=>{e.preventDefault();document.getElementById('formMsg').textContent='¡Mensaje enviado! Nos contactaremos pronto.';});
+</script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
