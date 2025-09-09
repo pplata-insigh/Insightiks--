@@ -308,25 +308,26 @@ footer{background:var(--card);border-top:1px solid var(--border)}
     <div class="grid grid-2 reveal">
 
       <!-- 🚀 Google Forms con bordes -->
-      <div style="
-        max-width: 100%; 
-        background: var(--card); 
-        border: 2px solid var(--border); 
-        border-radius: 12px; 
-        box-shadow: var(--shadow); 
-        padding: 20px;">
-        
-        <iframe 
-          src="https://docs.google.com/forms/d/e/1FAIpQLSeiat_YMN9urcn5Jt5ZjtpBN6WtDGsB2iWQbwFd85y2r0ZFKg/viewform?embedded=true" 
-          width="100%" 
-          height="800" 
-          frameborder="0" 
-          marginheight="0" 
-          marginwidth="0" 
-          style="border: none; border-radius: 8px;">
-          Cargando…
-        </iframe>
-      </div>
+<div style="
+  max-width: 100%; 
+  background: var(--card); 
+  border: 2px solid var(--border); 
+  border-radius: 12px; 
+  box-shadow: var(--shadow); 
+  padding: 12px;">
+  
+  <iframe 
+    src="https://docs.google.com/forms/d/e/1FAIpQLSeiat_YMN9urcn5Jt5ZjtpBN6WtDGsB2iWQbwFd85y2r0ZFKg/viewform?embedded=true" 
+    width="100%" 
+    height="500"   <!-- 👈 lo bajé de 800 a 500 -->
+    frameborder="0" 
+    marginheight="0" 
+    marginwidth="0" 
+    style="border: none; border-radius: 8px;">
+    Cargando…
+  </iframe>
+</div>
+
 
       <!-- 📍 Tarjeta con datos de contacto y mapa -->
       <div class="card">
@@ -427,6 +428,7 @@ document.getElementById('contactForm').addEventListener('submit',e=>{e.preventDe
 </script>
 </body>
 </html>
+
 
 
 
